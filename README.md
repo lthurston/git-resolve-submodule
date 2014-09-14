@@ -5,14 +5,15 @@ like filesystem directories.
 
 ## Usage
 
-$ git resolve-submodule &lt;pathish&gt;
+`$ git resolve-submodule <pathish>`
 
 The pathish value can be ".", ".." or a string that identifies the submodule.
 
 ## Installation
 
-1. Install Go and make sure that go build path is in $PATH
-2. Add a function to your dot pile that changes directory to the returned value:
+1. Install Go and make sure that go bin path (environmental setting) is in $PATH
+1. Install git-resolve-submodule (at this point you should be able to run `git resolve-submodule something`
+1. Add a function to your dot pile that changes directory to the returned value:
 
 ```
 function cm {
@@ -22,25 +23,23 @@ function cm {
 
 ## How to use it
 
-### Jump into a submodule
+### Change directory to a submodule root
 
 ```
 $ cm build
 ```
 
-Changes directory to the root of build submodule root.
+### Change directory to the root of the parent repository
 
 ```
 $ cm ..
 ```
 
-Changes directory to the root parent repository.
+### Changes directory to the root of the current repository
 
 ```
 $ cm .
 ```
-
-Changes directory to root of the current repository.
 
 ## How do I identify a submodule with _pathish_?
 
