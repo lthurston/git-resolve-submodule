@@ -11,13 +11,19 @@ The pathish value can be ".", ".." or a string that identifies the submodule.
 
 ## Installation
 
-1. Install Go and make sure that go bin path (environmental setting) is in $PATH
-1. Install git-resolve-submodule (at this point you should be able to run `git resolve-submodule something`
-1. Add a function to your dot pile that changes directory to the returned value:
+1. Install Go and make sure that go build path is in $PATH
+2. $ go get github.com/lthurston/git-resolve-submodule
+3. $ go install github.com/lthurston/git-resolve-submodule
+4. Add a function to your dot pile that changes directory to the returned value:
 
 ```
 function cm {
-  cd `git resolve-submodule $1`
+  path=`git resolve-submodule $1`
+  if [ $? -eq 0 ]; then
+    cd $path
+  else
+    echo 'No se puede.'
+  fi
 }
 ```
 

@@ -10,7 +10,7 @@ import (
 
 func main() {
 	if len(os.Args) != 2 {
-		fmt.Printf("usage: git resolve-submodule <module pathish>\n")
+		fmt.Printf("usage: git resolve-submodule <pathish>\n")
 		os.Exit(1)
 	}
 
