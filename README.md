@@ -26,7 +26,7 @@ export PATH=$PATH:$GOBIN
 
 5) Fetch the source: `go get github.com/lthurston/git-resolve-submodule`
 
-6) Compile and install: `go install github.com/lthurston/git-resolve-submodule/git-resolve-submodule.git`
+6) Compile and install: `go install src/github.com/lthurston/git-resolve-submodule/git-resolve-submodule.go `
 
 7) Add a function to your dot pile that changes directory to the returned value:
 
