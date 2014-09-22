@@ -54,6 +54,11 @@ $ cm .
 Use any string that appears in `git submodule`, including the commit id, the path, or the tag. The first
 submodule in which the provided "pathish" is found is the submodule which it will cd to.
 
+## Can I get cray-see with my _pathish_, like `cm build/../..`?
+
+Not right now, but it's possible. Dunno if it'd be all that useful though. I do see the advantage of `cm /` which would take you to the topmost repo if you're nusted and nuzzled in there real deep. Maybe I'll implement that.
+
+
 ## Works on:
 
 OSX 10.9.3 / Go 1.3 / Git 1.9.1
