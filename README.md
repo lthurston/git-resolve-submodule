@@ -18,7 +18,7 @@ The pathish value can be ".", ".." or a string that identifies the submodule.
 3) Add some stuff to your .bash_profile: 
 ```
 export GOPATH=$HOME/go
-export GOBIN=GOPATH/bin
+export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 ```
 
