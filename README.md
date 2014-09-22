@@ -12,9 +12,11 @@ The pathish value can be ".", ".." or a string that identifies the submodule.
 ## Installation
 
 1. Install Go and make sure that go build path is in $PATH
-2. $ go get github.com/lthurston/git-resolve-submodule
-3. $ go install github.com/lthurston/git-resolve-submodule
-4. Add a function to your dot pile that changes directory to the returned value:
+2. Set up a go dev environment: `mkdir -p ~/go/{src,bin}`
+3. Get theeself to the Go-ery: `cd ~/go`
+4. Fetch the source: `go get github.com/lthurston/git-resolve-submodule`
+5. Compile and install: `go install github.com/lthurston/git-resolve-submodule/git-resolve-submodule.git`
+6. Add a function to your dot pile that changes directory to the returned value:
 
 ```
 function cm {
