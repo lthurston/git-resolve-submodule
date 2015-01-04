@@ -22,6 +22,8 @@ func main() {
 		cmDotDot()
 	case ".":
 		cmDot()
+	case "/":
+		cmSlash()
 	default:
 		cmFind(os.Args[1])
 	}
@@ -31,26 +33,59 @@ func main() {
 }
 
 func mustBeWithinRepo() {
-	_, err := exec.Command("git", "status", "--porcelain").Output()
+	err := withinRepo()
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func withinRepo() (err error) {
+	_, err = exec.Command("git", "status", "--porcelain").Output()
+	return
 }
 
 func cmDotDot() {
 	cmDot()
 	os.Chdir("..")
 	cmDot()
-	mustBeWithinRepo()
 }
 
 func cmDot() {
-	path, err := exec.Command("git", "rev-parse", "--show-toplevel").Output()
+	err := chdirToCurrentRepoRoot()
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func chdirToCurrentRepoRoot() error {
+	path, err := getToplevel()
+	if err != nil {
+		return err
+	}
 	pathString := strings.TrimSpace(string(path))
 	err = os.Chdir(pathString)
+	return err
+}
+
+func cmSlash() {
+	var dir string
+	err := chdirToCurrentRepoRoot()
+	if err != nil {
+		log.Fatal(err)
+	}
+	dir, err = os.Getwd()
+	for err == nil {
+		dir, _ = os.Getwd()
+		os.Chdir("..")
+		chdirToCurrentRepoRoot()
+		_, err = getToplevel()
+	}
+
+	os.Chdir(dir)
+}
+
+func getToplevel() ([]byte, error) {
+	return exec.Command("git", "rev-parse", "--show-toplevel").Output()
 }
 
 func cmFind(find string) {
