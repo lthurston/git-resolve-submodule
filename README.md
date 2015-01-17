@@ -5,24 +5,26 @@ like filesystem directories.
 
 ## Usage
 
-`$ git resolve-submodule <pathish>`
+`$ git resolve-submodule <pathish>|-v`
 
 The pathish value can be ".", ".." or a string that identifies the submodule.
 
+The `-v` or `--version` flags do what you think.
+
 ## Installation
 
-1) Install Go (brew install go, or whatever)
+1) Install Go (`brew install go`, or whatever)
 
 2) Set up a go dev environment: `mkdir -p ~/go/{src,bin}`
 
-3) Add some stuff to your .bash_profile: 
+3) Add some stuff to your .bash_profile:
 ```
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 ```
 
-4) Get theeself to the Go-ery: `cd ~/go`
+4) Get thee to the Go-ery: `cd ~/go`
 
 5) Fetch the source: `go get github.com/lthurston/git-resolve-submodule`
 
@@ -44,22 +46,30 @@ function cm {
 
 ## How to use it
 
-### Change directory to a submodule root
+### Get thee to the top level of a submodule
 
 ```
-$ cm build
+$ cm stuff
 ```
 
-### Change directory to the root of the parent repository
+Where `stuff` is a string that appears in the output of `git submodule`.
+
+### Get thee to the top level of the containing repository
 
 ```
 $ cm ..
 ```
 
-### Changes directory to the root of the current repository
+### Get thee to the top level of the current repository / submodule
 
 ```
 $ cm .
+```
+
+### Get thee to the outermost git repository
+
+```
+$ cm /
 ```
 
 ## How do I identify a submodule with _pathish_?
@@ -74,6 +84,6 @@ Not right now, but it's possible. Dunno if it'd be all that useful though. I do 
 
 ## Works on:
 
-OSX 10.9.3 / Go 1.3 / Git 1.9.1
+OSX 10.9.3 / Go 1.4 / Git 1.9 - 2.2
 
 I haven't tried anything else.

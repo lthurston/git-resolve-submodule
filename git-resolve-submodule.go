@@ -8,6 +8,9 @@ import (
 	"strings"
 )
 
+// VERSION is the version
+const VERSION = "1.0a1"
+
 func main() {
 	if len(os.Args) != 2 {
 		fmt.Printf("usage: git resolve-submodule <pathish>\n")
@@ -18,6 +21,9 @@ func main() {
 	mustBeWithinRepo()
 
 	switch os.Args[1] {
+	case "-v", "--version":
+		fmt.Println("git-resolve-submodule", VERSION)
+		os.Exit(0)
 	case "..":
 		cmDotDot()
 	case ".":
